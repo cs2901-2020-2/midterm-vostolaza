@@ -16,24 +16,16 @@ public class BarChartMonitor {
     }
 
     public static void generateBarChart(float valueA, float valueB, float valueC, float valueD) throws IOException {
-        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        final String category = "Variables";
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String category = "Variables";
         dataset.addValue(valueA, "A", category);
         dataset.addValue(valueB, "B", category);
         dataset.addValue(valueC, "C", category);
         dataset.addValue(valueD, "D", category);
 
-        JFreeChart barChart = ChartFactory.createBarChart3D(
-                "Bar Chart",
-                "",
-                "Value",
-                dataset,
-                PlotOrientation.VERTICAL,
-                true, true, false);
+        JFreeChart barChart = ChartFactory.createBarChart3D("Bar Chart", "", "Value", dataset, PlotOrientation.VERTICAL, true, true, false);
 
-        int width = 640; /* Width of the image */
-        int height = 480; /* Height of the image */
         File barChart3D = new File("BarChart.jpeg");
-        ChartUtilities.saveChartAsJPEG(barChart3D, barChart, width, height);
+        ChartUtilities.saveChartAsJPEG(barChart3D, barChart, 640, 480);
     }
 }
